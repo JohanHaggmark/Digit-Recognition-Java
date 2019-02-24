@@ -126,21 +126,27 @@ public class Network implements Serializable {
 
 			myHiddenLayers.get(h)
 					.setBiasWeights(functions.getSumBias(myHiddenLayers.get(h).getBiasWeights(),
-							functions.lambda(learningRate, functions.matrixMultiplication(deltaFromNextLayer,
-									functions.reverseArray(myHiddenLayers.get(h).getTraingingNodes())))));
+							functions.lambda(learningRate, 
+									functions.getMeanValues(
+											functions.matrixMultiplication(deltaFromNextLayer,
+									functions.reverseArray(myHiddenLayers.get(h).getTraingingNodes()))))));
 
 			myHiddenLayers.get(h)
 					.setWeights(functions.sumArrays(myHiddenLayers.get(h).getWeights(),
-							functions.lambda(learningRate, functions.matrixMultiplication(deltaFromNextLayer,
-									functions.reverseArray(myHiddenLayers.get(h).getTraingingNodes())))));
+							functions.lambda(learningRate, 
+									functions.getMeanValues(
+											functions.matrixMultiplication(deltaFromNextLayer,
+									functions.reverseArray(myHiddenLayers.get(h).getTraingingNodes()))))));
 			deltaFromNextLayer = myHiddenLayers.get(h).getDelta();
 		}
 
 		inputLayer.setBiasWeights(functions.getSumBias(inputLayer.getBiasWeights(), functions.lambda(learningRate,
-				functions.matrixMultiplication(deltaFromNextLayer, functions.reverseArray(inputTrainingData)))));
+				functions.getMeanValues(
+						functions.matrixMultiplication(deltaFromNextLayer, functions.reverseArray(inputTrainingData))))));
 
 		inputLayer.setWeights(functions.sumArrays(inputLayer.getWeights(), functions.lambda(learningRate,
-				functions.matrixMultiplication(deltaFromNextLayer, functions.reverseArray(inputTrainingData)))));
+				functions.getMeanValues(
+						functions.matrixMultiplication(deltaFromNextLayer, functions.reverseArray(inputTrainingData))))));
 	/*	for (int h = 0; h < nodesFacit[0].length; h++) {
 			System.out.println(" Facit : " + nodesFacit[0][h]);
 			System.out.println(" out   : " + outputLayer.getTrainingNodes()[1][h]);
