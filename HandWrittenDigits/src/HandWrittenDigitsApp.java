@@ -4,7 +4,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 import javax.swing.JButton;
@@ -12,7 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
-import javax.swing.JTextPane;
 import javax.swing.JLabel;
 
 public class HandWrittenDigitsApp {
@@ -55,7 +53,6 @@ public class HandWrittenDigitsApp {
 	 */
 	public HandWrittenDigitsApp() {
 		initialize();
-
 	}
 
 	/**
